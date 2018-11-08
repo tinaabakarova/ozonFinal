@@ -8,18 +8,18 @@ import pages.ChooseItemPage;
 public class ChooseItemPageSteps extends BaseSteps {
     ChooseItemPage chooseItemPage;
 
-    String name = "", price = "";
+   // String name = "", price = "";
 
     public ChooseItemPageSteps(WebDriver driver) {
         chooseItemPage = new ChooseItemPage(driver);
     }
 
     public String getPrice() {
-        return price;
+        return chooseItemPage.getItemPrice();
     }
 
     public String getName() {
-        return name;
+        return chooseItemPage.getItemName();
     }
 
     public void chooseCategory(String name) throws InterruptedException {
@@ -37,15 +37,12 @@ public class ChooseItemPageSteps extends BaseSteps {
     @Step("вводит цену ")
     public void setPrice(String price) throws InterruptedException {
         chooseItemPage.setStartPrice(price);
-        //Thread.sleep(4000);
+        Thread.sleep(4000);
     }
 
     @Step("добавляет первый товар в корзину, запоминая название и цену")
-    public void addFirstItemToCart(WebDriverWait wait) throws InterruptedException {
-        waitToBeClicable(wait, chooseItemPage.getItemsWaitLocator());
+    public void addFirstItemToCart() throws InterruptedException {
         chooseItemPage.addFirstItemToCart();
-        name = chooseItemPage.getItemName();
-        price = chooseItemPage.getItemPrice();
         Thread.sleep(4000);
     }
 

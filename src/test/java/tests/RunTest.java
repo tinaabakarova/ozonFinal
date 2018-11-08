@@ -21,10 +21,10 @@ public class RunTest {
     WebDriver driver;
     WebDriverWait wait;
     ChromeOptions options;
-    MainPageSteps mainPageSteps;
-    CategoriesStepPage categoriesStepPage;
-    ChooseItemPageSteps chooseItemPageSteps;
-    CartPageSteps cartPageSteps;
+    private MainPageSteps mainPageSteps;
+    private CategoriesStepPage categoriesStepPage;
+    private ChooseItemPageSteps chooseItemPageSteps;
+    private CartPageSteps cartPageSteps;
 
     @Before
     public void init(){
@@ -67,7 +67,7 @@ public class RunTest {
 
     @И("^выбирает производителя \"(.*)\"$")
     public void chooseBrand(String name) throws InterruptedException {
-        chooseItemPageSteps.chooseBrand(name,wait);
+        chooseItemPageSteps.chooseBrand(name, wait);
     }
 
     @И("^вводит цену \"(.*)\"$")
@@ -77,7 +77,7 @@ public class RunTest {
 
     @И("^добавляет первый товар в корзину, запоминая название и цену$")
     public void addFirstItemToCart() throws InterruptedException {
-        chooseItemPageSteps.addFirstItemToCart(wait);
+        chooseItemPageSteps.addFirstItemToCart();
     }
 
     @И("^переходит в корзину$")

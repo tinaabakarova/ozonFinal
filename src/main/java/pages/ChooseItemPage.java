@@ -19,7 +19,7 @@ public class ChooseItemPage extends BasePage {
     private static final By cartLocator = By.xpath("//div[@data-test-id='header-cart']/a");
     private static By brandLocator = By.xpath("//div[@data-test-id='filter-block-brand']");
     private static By itemsWaitLocator = By.xpath("//div[@class='item-wrapper']");
-    private static String categoryItemFoormat = "//div[@class='category-list']//a[contains(text(), '')]";
+    private static String categoryItemFoormat = "(//div[@class='category-list'])[2]/ul//a[contains(text(),'%s')]";
 
     public ChooseItemPage(WebDriver driver) {
         super(driver);
@@ -55,7 +55,7 @@ public class ChooseItemPage extends BasePage {
 
     public void addFirstItemToCart(){
         List<WebElement> elements = getDriver().findElements(itemsLocator);
-        WebElement firstElement = elements.get(elements.size()-1);
+        WebElement firstElement = elements.get(elements.size() - 1);
         scroll(firstElement);
         itemName = firstElement.findElement(findNameLocator).getText();
         itemPrice = firstElement.findElement(findPriceLocator).getText();
