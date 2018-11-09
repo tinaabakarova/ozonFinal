@@ -19,15 +19,14 @@ public class CartPageSteps extends BaseSteps {
     }
 
     @Step("нажимаем удалить все")
-    public void deleteAll(WebDriverWait wait) throws InterruptedException {
-        Thread.sleep(6000);
-        waitToBeClicable(wait, cartPage.getDeleteAllbuttonLocator());
+    public void deleteAll(WebDriverWait wait) {
+        waitForVisibleElementLocated(wait, cartPage.getCartPriceLocator());
         cartPage.deleteAll();
     }
 
     @Step("проверяем что корзина пуста")
-    public void assertThatCartIsEmpty() throws InterruptedException {
-        Thread.sleep(4000);
+    public void assertThatCartIsEmpty(WebDriverWait wait) {
+        waitForVisibleElementLocated(wait, cartPage.getEmptyCartLocator());
         cartPage.assertThatCartIsEmpty();
     }
 }

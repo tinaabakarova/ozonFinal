@@ -8,8 +8,6 @@ import pages.ChooseItemPage;
 public class ChooseItemPageSteps extends BaseSteps {
     ChooseItemPage chooseItemPage;
 
-   // String name = "", price = "";
-
     public ChooseItemPageSteps(WebDriver driver) {
         chooseItemPage = new ChooseItemPage(driver);
     }
@@ -22,28 +20,30 @@ public class ChooseItemPageSteps extends BaseSteps {
         return chooseItemPage.getItemName();
     }
 
-    public void chooseCategory(String name) throws InterruptedException {
+    public void chooseCategory(String name, WebDriverWait wait) throws InterruptedException {
         chooseItemPage.chooseCategory(name);
-        Thread.sleep(4000);
+        Thread.sleep(1000);
+        waitForVisibleElementLocated(wait, chooseItemPage.getItemsWaitLocator());
     }
 
     @Step("выбирает производителя")
     public void chooseBrand(String name, WebDriverWait wait) throws InterruptedException {
         waitForVisibleElementLocated(wait, chooseItemPage.getBrandLocator());
         chooseItemPage.chooseBrand(name);
-        Thread.sleep(4000);
+        Thread.sleep(1000);
+        waitForVisibleElementLocated(wait, chooseItemPage.getItemsWaitLocator());
     }
 
     @Step("вводит цену ")
-    public void setPrice(String price) throws InterruptedException {
+    public void setPrice(String price, WebDriverWait wait) throws InterruptedException {
         chooseItemPage.setStartPrice(price);
-        Thread.sleep(4000);
+        Thread.sleep(1000);
+        waitToBeClicable(wait, chooseItemPage.getItemsWaitLocator());
     }
 
     @Step("добавляет первый товар в корзину, запоминая название и цену")
-    public void addFirstItemToCart() throws InterruptedException {
+    public void addFirstItemToCart() {
         chooseItemPage.addFirstItemToCart();
-        Thread.sleep(4000);
     }
 
     @Step("переходит в корзину")

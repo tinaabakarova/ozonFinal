@@ -10,9 +10,19 @@ import java.util.List;
 
 public class CartPage extends BasePage{
    public static final String format = "//div[@class='eCartSplitItems']//span[contains(text(),'%s')]";
-    public static final By cartItemLocator = By.xpath("//div[@class='eCartControls_info']");
-    public static final By deleteAllbuttonLocator = By.xpath("//div[@class='eCartControls_buttons']");
-    public static final By cartHeaderLocator = By.xpath("//div[@class='eCartPage_title']//span");
+    private static final By cartItemLocator = By.xpath("//div[@class='eCartControls_info']");
+    private static final By deleteAllbuttonLocator = By.xpath("//div[@class='eCartControls_buttons']");
+    private static final By cartHeaderLocator = By.xpath("//div[@class='eCartPage_title']//span");
+    private static final By cartPriceLocator = By.xpath("//div[@class='eCartTotal_summ']");
+    private static final By emptyCartLocator = By.xpath("//div[@class='bEmptyCartView']");
+
+    public By getEmptyCartLocator() {
+        return emptyCartLocator;
+    }
+
+    public By getCartPriceLocator() {
+        return cartPriceLocator;
+    }
 
     public CartPage(WebDriver driver) {
         super(driver);

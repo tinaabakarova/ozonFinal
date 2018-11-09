@@ -62,7 +62,7 @@ public class RunTest {
 
     @И ("^выбирает категорию \"(.*)\"$")
     public void chooseCameraCategory(String name) throws InterruptedException {
-        chooseItemPageSteps.chooseCategory(name);
+        chooseItemPageSteps.chooseCategory(name, wait);
     }
 
     @И("^выбирает производителя \"(.*)\"$")
@@ -72,7 +72,7 @@ public class RunTest {
 
     @И("^вводит цену \"(.*)\"$")
     public void setPrice(String price) throws InterruptedException {
-        chooseItemPageSteps.setPrice(price);
+        chooseItemPageSteps.setPrice(price, wait);
     }
 
     @И("^добавляет первый товар в корзину, запоминая название и цену$")
@@ -97,6 +97,6 @@ public class RunTest {
 
     @Тогда("^проверяем что корзина пуста$")
     public void checkIfCartisEmpty() throws InterruptedException {
-        cartPageSteps.assertThatCartIsEmpty();
+        cartPageSteps.assertThatCartIsEmpty(wait);
     }
 }

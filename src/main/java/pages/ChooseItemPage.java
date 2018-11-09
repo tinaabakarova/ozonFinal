@@ -18,7 +18,7 @@ public class ChooseItemPage extends BasePage {
     private static final By inputFieldLocator = By.xpath("//div[@data-test-id='filter-block-price']//input[@data-test-id='range-filter-from-input']");
     private static final By cartLocator = By.xpath("//div[@data-test-id='header-cart']/a");
     private static By brandLocator = By.xpath("//div[@data-test-id='filter-block-brand']");
-    private static By itemsWaitLocator = By.xpath("//div[@class='item-wrapper']");
+    private static By itemsWaitLocator = By.xpath("(//div[@class='item-wrapper']//div[@class='tile'][@data-index>=0])[1]");
     private static String categoryItemFoormat = "(//div[@class='category-list'])[2]/ul//a[contains(text(),'%s')]";
 
     public ChooseItemPage(WebDriver driver) {
@@ -46,7 +46,7 @@ public class ChooseItemPage extends BasePage {
         for (int i = 0; i < 6; i++) {
 
             inputField.sendKeys(Keys.BACK_SPACE);
-            Thread.sleep(300);
+            //Thread.sleep(300);
         }
         inputField.sendKeys(price);
         Thread.sleep(300);
