@@ -28,7 +28,7 @@ public class RunTest {
 
     @Before
     public void init(){
-        System.setProperty("webdriver.chrome.driver", "driver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "driver/chromedriver");
         options = new ChromeOptions();
         options.addArguments("--disable-notifications");
         driver = new ChromeDriver(options);
